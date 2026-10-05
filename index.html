@@ -77,15 +77,23 @@ animation:monte linear forwards;
 opacity:0.7;
 pointer-events:none;
 z-index:9999;
+animation:monte 8s linear forwards;
 }
 
-@keyframes monte{
-    from{
-        transform:translateY(100vh);
-    }
-    to{
-        transform:translateY(-100px);
-    }
+@keyframes monte {
+0% {
+transform: translateY(0);
+opacity: 0;
+}
+ 
+10% {
+opacity: 0.8;
+}
+ 
+100% {
+transform: translateY(-120vh);
+opacity: 0;
+}
 }
 
 </style>
@@ -286,7 +294,7 @@ coeur.innerHTML = symboles[Math.floor(Math.random()*symboles.length)];
     }, 7000);
 }
 
-setInterval(creerCoeur, 500);
+setInterval(creerCoeur, 250);
 
 </script>
 
