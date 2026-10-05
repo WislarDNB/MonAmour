@@ -2,90 +2,110 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pour Agnès ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pour Agnes ❤️</title>
 
 <style>
+
 body{
     margin:0;
-    font-family:Arial,sans-serif;
-    background:linear-gradient(to bottom,#ffd6e7,#ffecec);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
+    font-family:Segoe UI, sans-serif;
+    background:linear-gradient(180deg,#ffd5e5,#fff4f7);
+    text-align:center;
+    color:#333;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+.photo{
+    width:100%;
+    max-width:700px;
+    border-radius:25px;
+    margin-top:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 
 .card{
     background:white;
-    max-width:700px;
-    padding:40px;
     border-radius:25px;
+    margin-top:20px;
+    padding:30px;
     box-shadow:0 5px 20px rgba(0,0,0,0.15);
-    text-align:center;
 }
 
 h1{
     color:#e91e63;
 }
 
+.compteur{
+    font-size:28px;
+    color:#d81b60;
+    font-weight:bold;
+    margin:20px 0;
+}
+
 button{
     background:#e91e63;
     color:white;
     border:none;
-    padding:15px 30px;
+    padding:15px 25px;
     border-radius:20px;
-    font-size:18px;
     cursor:pointer;
-    transition:0.3s;
+    font-size:18px;
+    margin-top:10px;
 }
 
 button:hover{
-    background:#d81b60;
+    background:#c2185b;
 }
 
 #messageFinal{
     display:none;
-    margin-top:30px;
+    margin-top:25px;
 }
 
 .coeur{
-    font-size:40px;
-    animation: pulse 1.5s infinite;
+    position:fixed;
+    color:pink;
+    animation:monte 6s linear infinite;
+    opacity:0.5;
 }
 
-@keyframes pulse{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.2);}
-    100%{transform:scale(1);}
+@keyframes monte{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-100px);
+    }
 }
+
 </style>
 </head>
-
 <body>
+
+<div class="container">
+
+<h1>❤️ Pour Agnes ❤️</h1>
+
+<img srceg
 
 <div class="card">
 
-<div class="coeur">❤️</div>
+<h2>Notre histoire</h2>
 
-<h1>Pour Agnès</h1>
+<div id="jours" class="compteur"></div>
 
 <p>
-Depuis le 06/03/2026, nous écrivons notre histoire ensemble.
+Depuis le 06 mars 2026 nous écrivons notre histoire ensemble.
 </p>
 
 <p>
-Demain, cela fera un mois de plus à tes côtés.
-</p>
-
-<p>
-Nous avons connu de beaux moments, quelques disputes aussi,
-mais une chose n'a jamais changé :
-l'amour que j'ai pour toi.
-</p>
-
-<p>
-J'ai créé cette petite surprise pour te rappeler à quel point tu comptes pour moi.
+Chaque jour passé à tes côtés est un souvenir supplémentaire que je garde précieusement.
 </p>
 
 <button onclick="afficherMessage()">
@@ -97,30 +117,56 @@ Clique ici ❤️
 <h2>Je t'aime ❤️</h2>
 
 <p>
-Malgré les difficultés que nous pouvons rencontrer,
-je veux continuer à avancer avec toi.
+Malgré les difficultés que nous pouvons parfois traverser,
+tu es une personne extrêmement importante pour moi.
 </p>
 
 <p>
-Je veux construire ma vie avec toi,
-partager les beaux moments comme les plus compliqués,
-et continuer à écrire notre histoire jour après jour.
+Je veux continuer à avancer avec toi,
+construire notre avenir,
+et partager encore énormément de moments ensemble.
 </p>
 
 <p>
-Merci d'être à mes côtés.
+Merci d'être dans ma vie.
 </p>
 
-<h3>❤️ Axel ❤️</h3>
+<p><strong>❤️ Axel ❤️</strong></p>
+
+<button onclick="window.open('https://www.youtube.com/results?search_query=alex+warren+ordinary')">
+Notre chanson 🎵
+</button>
+
+</div>
 
 </div>
 
 </div>
 
 <script>
+
 function afficherMessage(){
     document.getElementById("messageFinal").style.display="block";
 }
+
+const debut = new Date("2026-03-06");
+const aujourdhui = new Date();
+
+const diff = aujourdhui - debut;
+const jours = Math.floor(diff / (1000*60*60*24));
+
+document.getElementById("jours").innerHTML =
+"❤️ " + jours + " jours ensemble ❤️";
+
+for(let i=0;i<20;i++){
+    let coeur = document.createElement("div");
+    coeur.innerHTML="❤️";
+    coeur.className="coeur";
+    coeur.style.left=Math.random()*100+"%";
+    coeur.style.animationDuration=(Math.random()*4+4)+"s";
+    document.body.appendChild(coeur);
+}
+
 </script>
 
 </body>
