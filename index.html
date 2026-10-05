@@ -98,6 +98,10 @@ button:hover{
 
 <h2>Notre histoire</h2>
 
+<h2>
+❤️ Le temps passe, mais mon amour pour toi grandit chaque seconde ❤️
+</h2>
+ 
 <div id="jours" class="compteur"></div>
 
 <p>
@@ -113,8 +117,26 @@ Clique ici ❤️
 </button>
 
 <div id="messageFinal">
-
-<h2>Je t'aime ❤️</h2>
+ 
+<div style="
+display:flex;
+align-items:center;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+">
+ 
+<img src="photo.jpeg"
+alt="Notre photo"
+style="
+width:220px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.25);
+">
+ 
+<div>
+ 
+<h3>Je t'aime ❤️</h3
 
 <p>
 Malgré les difficultés que nous pouvons parfois traverser,
@@ -130,10 +152,13 @@ et partager encore énormément de moments ensemble.
 <p>
 Merci d'être dans ma vie.
 </p>
-
+ 
+</div>
+</div>
+ 
 <p><strong>❤️ Axel ❤️</strong></p>
 
-<button onclick="window.open('https://www.youtube.com/results?search_query=alex+warren+ordinary')">
+<button onclick="window.open('https://www.youtube.com/watch?v=A8dH4cKGa6s&list=RDA8dH4cKGa6s&start_radio=1')">
 Notre chanson 🎵
 </button>
 
@@ -149,14 +174,80 @@ function afficherMessage(){
     document.getElementById("messageFinal").style.display="block";
 }
 
-const debut = new Date("2026-03-06");
-const aujourdhui = new Date();
-
-const diff = aujourdhui - debut;
-const jours = Math.floor(diff / (1000*60*60*24));
-
+function updateCompteur() {
+ 
+const debut = new Date("2026-03-06T00:38:00");
+const maintenant = new Date();
+ 
+let totalSecondes = Math.floor((maintenant - debut) / 1000);
+ 
+let secondes = totalSecondes % 60;
+let totalMinutes = Math.floor(totalSecondes / 60);
+ 
+let minutes = totalMinutes % 60;
+let totalHeures = Math.floor(totalMinutes / 60);
+ 
+let heures = totalHeures % 24;
+let totalJours = Math.floor(totalHeures / 24);
+ 
+let annees = Math.floor(totalJours / 365);
+totalJours -= annees * 365;
+ 
+let mois = Math.floor(totalJours / 30);
+totalJours -= mois * 30;
+ 
+let jours = totalJours;
+ 
 document.getElementById("jours").innerHTML =
-"❤️ " + jours + " jours ensemble ❤️";
+`
+<div style="font-size:28px;font-weight:bold;color:#e91e63;">
+❤️ Ensemble depuis le 06/03/2026 à 00h38 ❤️
+</div>
+ 
+<div style="
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin-top:20px;
+">
+ 
+<div style="background:white;padding:15px;border-radius:15px;min-width:100px;">
+<div style="font-size:36px;font-weight:bold;color:#e91e63;">${annees}</div>
+<div>Années</div>
+</div>
+ 
+<div style="background:white;padding:15px;border-radius:15px;min-width:100px;">
+<div style="font-size:36px;font-weight:bold;color:#e91e63;">${mois}</div>
+<div>Mois</div>
+</div>
+ 
+<div style="background:white;padding:15px;border-radius:15px;min-width:100px;">
+<div style="font-size:36px;font-weight:bold;color:#e91e63;">${jours}</div>
+<div>Jours</div>
+</div>
+ 
+<div style="background:white;padding:15px;border-radius:15px;min-width:100px;">
+<div style="font-size:36px;font-weight:bold;color:#e91e63;">${heures}</div>
+<div>Heures</div>
+</div>
+ 
+<div style="background:white;padding:15px;border-radius:15px;min-width:100px;">
+<div style="font-size:36px;font-weight:bold;color:#e91e63;">${minutes}</div>
+<div>Minutes</div>
+</div>
+ 
+<div style="background:white;padding:15px;border-radius:15px;min-width:100px;">
+<div style="font-size:36px;font-weight:bold;color:#e91e63;">${secondes}</div>
+<div>Secondes</div>
+</div>
+ 
+</div>
+`;
+}
+ 
+updateCompteur();
+setInterval(updateCompteur, 1000);
 
 for(let i=0;i<20;i++){
     let coeur = document.createElement("div");
