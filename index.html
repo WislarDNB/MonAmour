@@ -70,23 +70,10 @@ button:hover{
 
 .coeur{
 position:fixed;
-bottom:-40px;
-font-size:35px;
+bottom:-60px;
 pointer-events:none;
-z-index:9999;
-animation: monte 8s linear forwards;
-}
- 
-@keyframes monte{
-from{
-transform:translateY(0);
+z-index:99999;
 opacity:1;
-}
- 
-to{
-transform:translateY(-1500px);
-opacity:0;
-}
 }
 
 </style>
@@ -173,11 +160,10 @@ Notre chanson 🎵
 
 <script>
 
-function afficherMessage(){
- 
+function afficherMessage() {
 document.getElementById("messageFinal").style.display = "block";
  
-for(let i = 0; i < 60; i++){
+for (let i = 0; i < 60; i++) {
 setTimeout(creerCoeur, i * 80);
 }
 }
@@ -274,29 +260,53 @@ function updateCompteur() {
 updateCompteur();
 setInterval(updateCompteur, 1000);
 
-function creerCoeur(){
- 
-const coeur = document.createElement("div");
- 
-const symboles = ["❤️","💕","💖","💗"];
- 
-coeur.innerHTML =
-symboles[Math.floor(Math.random()*symboles.length)];
- 
-coeur.className = "coeur";
- 
-coeur.style.left =
-Math.random() * window.innerWidth + "px";
- 
-document.body.appendChild(coeur);
- 
-setTimeout(() => {
-coeur.remove();
-}, 8000);
-}
- 
-setInterval(creerCoeur, 300);
+function creerCoeur() {
+    const coeur = document.createElement("div");
+    const symboles = ["❤️", "💕", "💖", "💗"];
 
+    coeur.textContent =
+        symboles[Math.floor(Math.random() * symboles.length)];
+
+    coeur.className = "coeur";
+    coeur.style.left = Math.random() * 95 + "vw";
+    coeur.style.fontSize = (Math.random() * 20 + 25) + "px";
+
+    document.body.appendChild(coeur);
+
+    let position = -60;
+    let rotation = 0;
+    let mouvementHorizontal = 0;
+
+    const vitesse = Math.random() * 1.5 + 2;
+    const direction = Math.random() < 0.5 ? -1 : 1;
+
+    function animerCoeur() {
+        position += vitesse;
+        rotation += 1;
+        mouvementHorizontal += direction * 0.15;
+
+        coeur.style.bottom = position + "px";
+        coeur.style.transform =
+            "translateX(" + mouvementHorizontal + "px) rotate(" +
+            rotation + "deg)";
+
+        if (position < window.innerHeight + 100) {
+            requestAnimationFrame(animerCoeur);
+        } else {
+            coeur.remove();
+        }
+    }
+
+    requestAnimationFrame(animerCoeur);
+}
+
+for (let i = 0; i < 12; i++) {
+    setTimeout(creerCoeur, i * 150);
+}
+
+setInterval(creerCoeur, 400);
+
+    
 </script>
 
 </body>
