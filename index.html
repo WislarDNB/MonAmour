@@ -72,12 +72,9 @@ button:hover{
 position:fixed;
 bottom:-50px;
 color:pink;
-font-size:28px;
-animation:monte linear forwards;
-opacity:0.7;
+font-size:30px;
 pointer-events:none;
 z-index:9999;
-animation:monte 8s linear forwards;
 }
 
 @keyframes monte {
@@ -87,11 +84,11 @@ opacity: 0;
 }
  
 10% {
-opacity: 0.8;
+opacity: 0.9;
 }
  
 100% {
-transform: translateY(-120vh);
+transform: translateY(-150vh);
 opacity: 0;
 }
 }
@@ -181,7 +178,12 @@ Notre chanson 🎵
 <script>
 
 function afficherMessage(){
-    document.getElementById("messageFinal").style.display="block";
+ 
+document.getElementById("messageFinal").style.display = "block";
+ 
+for(let i = 0; i < 60; i++){
+setTimeout(creerCoeur, i * 80);
+}
 }
 
 function updateCompteur() {
@@ -277,24 +279,33 @@ updateCompteur();
 setInterval(updateCompteur, 1000);
 
 function creerCoeur() {
-
-    let coeur = document.createElement("div");
-
-   const symboles = ["❤️","💕","💖","💗"];
-coeur.innerHTML = symboles[Math.floor(Math.random()*symboles.length)];
-    coeur.className = "coeur";
-
-    coeur.style.left = Math.random() * 100 + "%";
-    coeur.style.animationDuration = (Math.random() * 3 + 4) + "s";
-
-    document.body.appendChild(coeur);
-
-    setTimeout(() => {
-        coeur.remove();
-    }, 7000);
+ 
+const coeur = document.createElement("div");
+ 
+const symboles = ["❤️","💕","💖","💗"];
+ 
+coeur.innerHTML =
+symboles[Math.floor(Math.random() * symboles.length)];
+ 
+coeur.className = "coeur";
+ 
+coeur.style.left = Math.random() * 100 + "%";
+ 
+coeur.style.animation =
+"monte " + (Math.random() * 4 + 6) + "s linear forwards";
+ 
+document.body.appendChild(coeur);
+ 
+setTimeout(() => {
+coeur.remove();
+}, 10000);
 }
 
-setInterval(creerCoeur, 250);
+for(let i = 0; i < 15; i++){
+setTimeout(creerCoeur, i * 200);
+}
+ 
+setInterval(creerCoeur, 300);
 
 </script>
 
