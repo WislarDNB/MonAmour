@@ -70,27 +70,22 @@ button:hover{
 
 .coeur{
 position:fixed;
-bottom:0;
-color:red;
-font-size:50px;
-opacity:1;
+bottom:-40px;
+font-size:35px;
 pointer-events:none;
-z-index:99999;
-}
-
-@keyframes monte {
-0% {
-transform: translateY(0);
-opacity: 0;
+z-index:9999;
+animation: monte 8s linear forwards;
 }
  
-10% {
-opacity: 0.9;
+@keyframes monte{
+from{
+transform:translateY(0);
+opacity:1;
 }
  
-100% {
-transform: translateY(-150vh);
-opacity: 0;
+to{
+transform:translateY(-1500px);
+opacity:0;
 }
 }
 
@@ -279,23 +274,25 @@ function updateCompteur() {
 updateCompteur();
 setInterval(updateCompteur, 1000);
 
-function creerCoeur() {
+function creerCoeur(){
  
 const coeur = document.createElement("div");
  
-coeur.innerHTML = "❤️";
+const symboles = ["❤️","💕","💖","💗"];
  
-coeur.style.position = "fixed";
-coeur.style.left = "50%";
-coeur.style.bottom = "50px";
-coeur.style.fontSize = "60px";
-coeur.style.zIndex = "99999";
+coeur.innerHTML =
+symboles[Math.floor(Math.random()*symboles.length)];
+ 
+coeur.className = "coeur";
+ 
+coeur.style.left =
+Math.random() * window.innerWidth + "px";
  
 document.body.appendChild(coeur);
-}
-
-for(let i = 0; i < 15; i++){
-setTimeout(creerCoeur, i * 200);
+ 
+setTimeout(() => {
+coeur.remove();
+}, 8000);
 }
  
 setInterval(creerCoeur, 300);
