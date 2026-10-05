@@ -1,0 +1,51 @@
+
+export default function AgnesSurpriseSite() {
+  const revealMessage = () => {
+    const element = document.getElementById('final-message');
+    if (element) element.classList.remove('hidden');
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-pink-100 to-red-100 flex items-center justify-center p-6">
+      <div className="max-w-2xl bg-white rounded-3xl shadow-xl p-8 text-center">
+        <h1 className="text-4xl font-bold text-pink-600 mb-4">
+          Pour Agnès ❤️
+        </h1>
+
+        <p className="text-lg text-gray-700 mb-4">
+          Depuis le 06/03/2026, nous écrivons notre histoire ensemble.
+        </p>
+
+        <p className="text-gray-600 mb-6">
+          Demain, cela fera encore un mois de plus à tes côtés. Il y a eu des
+          moments faciles, d'autres plus compliqués, parfois des disputes,
+          parfois des incompréhensions. Mais une chose n'a jamais changé :
+          l'amour que j'ai pour toi.
+        </p>
+
+        <p className="text-gray-600 mb-8">
+          J'ai voulu créer cette petite surprise pour te rappeler à quel point
+          tu comptes pour moi.
+        </p>
+
+        <button
+          onClick={revealMessage}
+          className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-2xl text-lg shadow-md"
+        >
+          Clique ici ❤️
+        </button>
+
+        <div id="final-message" className="hidden mt-8">
+          <p className="text-2xl font-semibold text-red-600 mb-4">
+            Je t'aime.
+          </p>
+          <p className="text-gray-700">
+            Malgré les disputes, malgré les difficultés, je veux continuer à
+            construire ma vie avec toi, avancer main dans la main et créer
+            notre avenir ensemble. Merci d'être à mes côtés.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
