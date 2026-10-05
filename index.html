@@ -70,11 +70,12 @@ button:hover{
 
 .coeur{
 position:fixed;
-bottom:-50px;
-color:pink;
-font-size:30px;
+bottom:0;
+color:red;
+font-size:50px;
+opacity:1;
 pointer-events:none;
-z-index:9999;
+z-index:99999;
 }
 
 @keyframes monte {
@@ -231,7 +232,7 @@ function updateCompteur() {
 
     document.getElementById("jours").innerHTML = `
         <div style="font-size:28px;font-weight:bold;color:#e91e63;margin-bottom:15px;">
-            ❤️ Ensemble depuis le 06/03/2026 à 00h38 ❤️
+            ❤️ ❤️
         </div>
 
         <div style="
@@ -282,23 +283,15 @@ function creerCoeur() {
  
 const coeur = document.createElement("div");
  
-const symboles = ["❤️","💕","💖","💗"];
+coeur.innerHTML = "❤️";
  
-coeur.innerHTML =
-symboles[Math.floor(Math.random() * symboles.length)];
- 
-coeur.className = "coeur";
- 
-coeur.style.left = Math.random() * 100 + "%";
- 
-coeur.style.animation =
-"monte " + (Math.random() * 4 + 6) + "s linear forwards";
+coeur.style.position = "fixed";
+coeur.style.left = "50%";
+coeur.style.bottom = "50px";
+coeur.style.fontSize = "60px";
+coeur.style.zIndex = "99999";
  
 document.body.appendChild(coeur);
- 
-setTimeout(() => {
-coeur.remove();
-}, 10000);
 }
 
 for(let i = 0; i < 15; i++){
